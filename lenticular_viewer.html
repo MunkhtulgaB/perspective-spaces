@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+        <style>
+            #exhibit {
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <img id="exhibit" src="0_TAKES/facing/small_size/0.jpg"/>
+        </div>
+
+        <script>
+
+            const images = [
+                "0_TAKES/facing/small_size/0.jpg",
+                "0_TAKES/facing/small_size/1.jpg",
+                "0_TAKES/facing/small_size/2.jpg",
+                "0_TAKES/facing/small_size/3.jpg",
+                "0_TAKES/facing/small_size/4.jpg",
+                "0_TAKES/facing/small_size/5.jpg",   
+                "0_TAKES/facing/small_size/6.jpg",
+                "0_TAKES/facing/small_size/7.jpg",
+                "0_TAKES/facing/small_size/8.jpg",
+                "0_TAKES/facing/small_size/9.jpg",
+                "0_TAKES/facing/small_size/10.jpg",
+            ]
+
+            const WIDTH = 591;
+            const HEIGHT = 841;
+            const container = $("#container");
+            const exhibit = $("#exhibit");
+
+            var currentView = "";
+
+            container.css({"width": WIDTH, "height": HEIGHT})
+            container.on("mousemove", function(e) {
+                const currentX = e.clientX;
+                view_width = WIDTH / images.length;
+                
+                const newViewIdx = Math.floor(currentX / view_width);
+                const newView = images[newViewIdx]
+                
+                if (currentView != newView) {
+                    exhibit.attr("src", newView);
+                    currentView = newView;
+                    console.log(newViewIdx, newView)
+                }
+            });
+        </script>
+
+    </body>
+</html>
